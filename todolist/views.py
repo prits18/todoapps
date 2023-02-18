@@ -18,7 +18,7 @@ def index(request):
 def addTodoItem(request):
     form=TodolistForm(request.POST)
     if form.is_valid():
-        new_todo=Todolist(request.POST['text'])
+        new_todo=Todolist(text=request.POST['text'])
         new_todo.save()
     
     return redirect('index')
