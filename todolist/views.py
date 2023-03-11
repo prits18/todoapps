@@ -11,6 +11,7 @@ from django.views.decorators.http import require_POST
 
 def index(request):
     todo_item = Todolist.objects.order_by('id')
+    form= TodolistForm()
     context={'todo_item': todo_item, 'form' : form}
     return render(request,'todolist/index.html',context)
 
@@ -25,7 +26,7 @@ def addTodoItem(request):
 
 
 def completedTodo(request,todo_id):
-    todo= Todolist.object.get(pk=todo_id)
+    todo= Todolist.objects.get(pk=todo_id)
     todo.completed=True
     todo.save()
 
